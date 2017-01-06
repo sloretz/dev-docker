@@ -13,7 +13,7 @@ Use the script *./build.bash* to create the docker image.
 Don't bother
 
 ### gz-dev
-This image builds off of **gz-base**. It adds a user "developer" with the same user and primary group id as the user who built the container.
+This image builds off of **gz-base**. It adds a user "developer" with the same user id as the user who built the container.
 #####Building
  As a normal user, build this image with
  *./build.bash*
