@@ -49,8 +49,9 @@ sudo docker run -ti \
   -v "/tmp/.X11-unix:/tmp/.X11-unix" \
   $DOCKER_GPU_PARAMS \
   -v "/tmp/.docker.xauth:/tmp/.docker.xauth" \
+  -v "$SRC_DIR:/src_rw" \
   -v "$SRC_DIR:/src:ro" \
+  -v "$SRC_DIR:/code:ro" \
   -v "$BUILD_DIR:/build" \
   --rm \
-  -p 11345:11345 \
-  gz-dev
+  precious:latest bash

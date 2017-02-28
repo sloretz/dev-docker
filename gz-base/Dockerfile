@@ -11,6 +11,7 @@ RUN apt-get update \
         lsb-release \
         sudo \
         mercurial \
+        vim \
  && apt-get clean
 
 # Install gazebo dependencies

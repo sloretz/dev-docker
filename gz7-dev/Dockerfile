@@ -12,6 +12,8 @@ RUN apt-get update \
         sudo \
         mercurial \
         vim \
+        cmake \
+        software-properties-common \
  && apt-get clean
 
 # Install gazebo dependencies
@@ -19,26 +21,43 @@ RUN apt-get update \
 
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
 RUN wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
-RUN wget https://bitbucket.org/osrf/release-tools/raw/default/jenkins-scripts/lib/dependencies_archive.sh -O /tmp/dependencies.sh
 
-# Required and optional dependencies
-# Strips ignition and sdformat so they can be built from source
-RUN bash -c 'ROS_DISTRO=Dummy source /tmp/dependencies.sh \
- && apt-get update \
- && deps=" \
-        $BASE_DEPENDENCIES \
-        $GAZEBO_BASE_DEPENDENCIES \
-        $GAZEBO_EXTRA_DEPENDENCIES \
-        $SDFORMAT_BASE_DEPENDENCIES \
-        $IGN_COMMON_DEPENDENCIES \
-        $IGN_TRANSPORT_DEPENDENCIES \
-        libgflags-dev \
-        libusb-1.0-0-dev \
-        " \
- && deps=$(sed "s/\\\ //g" <<< $deps) \
+# DART
+RUN sudo apt-add-repository ppa:dartsim
+
+RUN apt-get update \
  && apt-get install -y \
-        $deps \
- && apt-get clean'
+        libdart-core4-dev \
+        protobuf-compiler \
+        libprotobuf9v5 \
+        libqtcore4 \
+        libqtgui4 \
+        libsdformat4 \
+        ttf-dejavu-core \
+        libtbb-dev \
+        libxml2-dev \
+        libtinyxml2-dev \
+        libqt4-dev \
+        libqtwebkit-dev \
+        libprotoc-dev \
+        libfreeimage-dev \
+        libprotobuf-dev \
+        libboost-all-dev \
+        freeglut3-dev \
+        libogre-1.9-dev \
+        libtar-dev \
+        libcurl4-openssl-dev \
+        libgts-dev \
+        libusb-1.0-0-dev \
+        libgdal-dev \
+        libavformat-dev \
+        libavcodec-dev \
+        libswscale-dev \
+        libsdformat4-dev \
+        libignition-math2-dev \
+        libsimbody-dev \
+        libbullet-dev \
+ && apt-get clean
 
 #nvidia docker
 LABEL com.nvidia.volumes.needed="nvidia_driver"
