@@ -25,6 +25,14 @@ then
     chmod a+r $XAUTH
 fi
 
+DOCKER_OPTS=
+
+VIMRC=~/.vimrc
+if [ -f $VIMRC ]
+then
+  DOCKER_OPTS="$DOCKER_OPTS -v $VIMRC:/home/developer/.vimrc:ro"
+fi
+
 sudo nvidia-docker run -it \
   -e DISPLAY \
   -e QT_X11_NO_MITSHM=1 \
@@ -34,6 +42,7 @@ sudo nvidia-docker run -it \
   -v "/etc/localtime:/etc/localtime:ro" \
   --rm=true \
   --security-opt seccomp=unconfined \
+  $DOCKER_OPTS \
   -v "$SRC_DIR:/src_rw" \
   -v "$SRC_DIR:/src:ro" \
   -v "$BUILD_DIR:/build" \
