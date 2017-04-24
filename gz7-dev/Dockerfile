@@ -22,12 +22,11 @@ RUN apt-get update \
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list
 RUN wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
 
-# DART
+# DART Not working, need to be on trusty for dart 4
 RUN sudo apt-add-repository ppa:dartsim
 
 RUN apt-get update \
  && apt-get install -y \
-        libdart-core4-dev \
         protobuf-compiler \
         libprotobuf9v5 \
         libqtcore4 \
