@@ -6,6 +6,7 @@ RUN apt-get update \
     lsb-release \
     wget \
     sudo \
+    git \
  && apt-get clean
 
 
