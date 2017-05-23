@@ -12,6 +12,10 @@ RUN apt-get update \
         sudo \
         mercurial \
         vim \
+        gdb \
+        valgrind \
+        autotools-dev \
+        automake \
  && apt-get clean
 
 # Install gazebo dependencies
