@@ -59,6 +59,7 @@ ENV USERNAME developer
 RUN useradd -U --uid ${user_id} -ms /bin/bash $USERNAME \
  && echo "$USERNAME:$USERNAME" | chpasswd \
  && adduser $USERNAME sudo \
- && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers.d/$USERNAME
+ && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers.d/$USERNAME \
+ && echo "LANG=en_us.UTF-8" >> /home/$USERNAME/.bashrc
 USER $USERNAME
-WORKDIR /home/$USERNAME
+WORKDIR /workspace
