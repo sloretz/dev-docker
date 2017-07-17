@@ -59,7 +59,11 @@ ENV USERNAME developer
 RUN useradd -U --uid ${user_id} -ms /bin/bash $USERNAME \
  && echo "$USERNAME:$USERNAME" | chpasswd \
  && adduser $USERNAME sudo \
- && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers.d/$USERNAME \
- && echo "LANG=en_US.UTF-8" >> /home/$USERNAME/.bashrc
+ && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers.d/$USERNAME
 USER $USERNAME
+WORKDIR /home/$USERNAME/
+
+COPY settings.bash .settings.bash
+RUN echo "source ~/.settings.bash" >> .bashrc
+
 WORKDIR /workspace
