@@ -40,6 +40,7 @@ sudo nvidia-docker run -it \
   -v "$XAUTH:$XAUTH" \
   -v "/tmp/.X11-unix:/tmp/.X11-unix" \
   -v "/etc/localtime:/etc/localtime:ro" \
+  -v "/var/run/spnav.sock:/var/run/spnav.sock" \
   --rm=true \
   --security-opt seccomp=unconfined \
   $DOCKER_OPTS \
