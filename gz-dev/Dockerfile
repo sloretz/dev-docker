@@ -38,6 +38,11 @@ RUN bash -c 'ROS_DISTRO=Dummy source /tmp/dependencies.sh \
         $IGN_TRANSPORT_DEPENDENCIES \
         libgflags-dev \
         libusb-1.0-0-dev \
+        libglew-dev \
+        python3-setuptools \
+        python3-nose \
+        python3-nose-cov \
+        python-protobuf \
         " \
  && deps=$(sed "s/\\\ //g" <<< $deps) \
  && apt-get install -y \
