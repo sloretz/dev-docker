@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
 
-if [ $# -ne 2 ]
+if [ $# -lt 1 ]
 then
-    echo "Usage: $0 <docker image> <dir with workspace>"
+    echo "Usage: $0 <docker image> [<dir with workspace> ...]"
     exit 1
 fi
 
-IMG=$(basename $1)
-WS_DIR=$2
 
-if [ ! -d $WS_DIR/src ]
-then
-  echo "Workspace directory does not have a folder called 'src'"
-  exit 1
-fi
+IMG=$(basename $1)
+
+ARGS=("$@")
+WORKSPACES=("${ARGS[@]:1}")
 
 # Make sure processes in the container can connect to the x server
 # Necessary so gazebo can create a context for OpenGL rendering (even headless)
@@ -44,6 +41,18 @@ then
   DOCKER_OPTS="$DOCKER_OPTS -v /var/run/spnav.sock:/var/run/spnav.sock"
 fi
 
+for WS_DIR in ${WORKSPACES[@]}
+do
+  echo "Workspace! $WS_DIR in $ARGS"
+  WS_DIRNAME=$(basename $WS_DIR)
+  if [ ! -d $WS_DIR/src ]
+  then
+    echo "Workspace $WS_DIR does not have a folder called 'src'"
+    exit 1
+  fi
+  DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/workspace/$WS_DIRNAME"
+done
+
 sudo nvidia-docker run -it \
   -e DISPLAY \
   -e QT_X11_NO_MITSHM=1 \
@@ -53,6 +62,5 @@ sudo nvidia-docker run -it \
   -v "/etc/localtime:/etc/localtime:ro" \
   --rm=true \
   --security-opt seccomp=unconfined \
-  -v "$WS_DIR:/workspace" \
   $DOCKER_OPTS \
   $IMG
