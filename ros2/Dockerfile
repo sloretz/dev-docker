@@ -41,6 +41,7 @@ RUN apt-get update \
     pydocstyle \
     pyflakes \
     python3-coverage \
+    python3-dbg \
     python3-mock \
     python3-pep8 \
     uncrustify \

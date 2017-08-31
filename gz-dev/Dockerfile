@@ -39,6 +39,7 @@ RUN bash -c 'ROS_DISTRO=Dummy source /tmp/dependencies.sh \
         libgflags-dev \
         libusb-1.0-0-dev \
         libglew-dev \
+        libspnav-dev \
         python3-setuptools \
         python3-nose \
         python3-nose-cov \
