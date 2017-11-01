@@ -43,14 +43,15 @@ fi
 
 for WS_DIR in ${WORKSPACES[@]}
 do
-  echo "Workspace! $WS_DIR in $ARGS"
   WS_DIRNAME=$(basename $WS_DIR)
   if [ ! -d $WS_DIR/src ]
   then
-    echo "Workspace $WS_DIR does not have a folder called 'src'"
-    exit 1
+    echo "Other! $WS_DIR"
+    DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/other/$WS_DIRNAME"
+  else
+    echo "Workspace! $WS_DIR"
+    DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/workspace/$WS_DIRNAME"
   fi
-  DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/workspace/$WS_DIRNAME"
 done
 
 sudo nvidia-docker run -it \

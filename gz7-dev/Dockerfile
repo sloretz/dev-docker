@@ -14,6 +14,7 @@ RUN apt-get update \
         vim \
         cmake \
         software-properties-common \
+        python3-setuptools \
  && apt-get clean
 
 # Install gazebo dependencies
@@ -27,6 +28,7 @@ RUN sudo apt-add-repository ppa:dartsim
 
 RUN apt-get update \
  && apt-get install -y \
+        ruby \
         protobuf-compiler \
         libprotobuf9v5 \
         libqtcore4 \
@@ -36,6 +38,7 @@ RUN apt-get update \
         libtbb-dev \
         libxml2-dev \
         libtinyxml2-dev \
+        libspnav-dev \
         libqt4-dev \
         libqtwebkit-dev \
         libprotoc-dev \
@@ -52,8 +55,6 @@ RUN apt-get update \
         libavformat-dev \
         libavcodec-dev \
         libswscale-dev \
-        libsdformat4-dev \
-        libignition-math2-dev \
         libsimbody-dev \
         libbullet-dev \
  && apt-get clean
