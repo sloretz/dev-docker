@@ -36,9 +36,12 @@ then
 fi
 
 SPNAV_SOCK=/var/run/spnav.sock
-if [ -f $SPNAV_SOCK ]
+if [ -e $SPNAV_SOCK ]
 then
+  echo "Spacenav enabled"
   DOCKER_OPTS="$DOCKER_OPTS -v /var/run/spnav.sock:/var/run/spnav.sock"
+else
+  echo "Spacenav disabled"
 fi
 
 for WS_DIR in ${WORKSPACES[@]}
