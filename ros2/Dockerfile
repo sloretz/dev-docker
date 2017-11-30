@@ -11,6 +11,7 @@ RUN apt-get update \
     gdb \
     vim \
     mercurial \
+    python3-dbg \
  && apt-get clean
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list' \
@@ -32,6 +33,7 @@ RUN apt-get update \
     python3-empy \
     python3-nose \
     python3-pip \
+    python3-pyparsing \
     python3-setuptools \
     python3-vcstool \
     python3-yaml \
@@ -41,7 +43,6 @@ RUN apt-get update \
     pydocstyle \
     pyflakes \
     python3-coverage \
-    python3-dbg \
     python3-mock \
     python3-pep8 \
     uncrustify \
@@ -49,10 +50,21 @@ RUN apt-get update \
     libtinyxml2-dev \
  && apt-get clean
 
-RUN pip3 install \
+RUN pip3 install --upgrade pip \
+ && pip3 install \
     argcomplete \
     flake8 \
-    flake8-import-order
+    flake8-blind-except \
+    flake8-builtins \
+    flake8-class-newline \
+    flake8-comprehensions \
+    flake8-deprecated \
+    flake8-docstrings \
+    flake8-import-order \
+    flake8-quotes \
+    pytest \
+    pytest-cov \
+    pytest-runner
 
 # Make a user matching my user id
 ARG user_id
