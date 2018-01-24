@@ -48,7 +48,17 @@ RUN apt-get update \
     uncrustify \
     libasio-dev \
     libtinyxml2-dev \
+    libcurl4-openssl-dev \
+    libqt5core5a \
+    libqt5gui5 \
+    libqt5opengl5 \
+    libqt5widgets5 \
+    libxaw7-dev \
+    libgles2-mesa-dev \
+    libglu1-mesa-dev \
+    qtbase5-dev \
  && apt-get clean
+
 
 RUN pip3 install --upgrade pip \
  && pip3 install \

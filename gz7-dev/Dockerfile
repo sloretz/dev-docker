@@ -37,6 +37,7 @@ RUN apt-get update \
         ttf-dejavu-core \
         libtbb-dev \
         libxml2-dev \
+        libtinyxml-dev \
         libtinyxml2-dev \
         libspnav-dev \
         libqt4-dev \

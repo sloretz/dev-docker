@@ -43,6 +43,7 @@ RUN bash -c 'ROS_DISTRO=Dummy source /tmp/dependencies.sh \
         python3-setuptools \
         python3-nose \
         python3-nose-cov \
+        python3-pyparsing \
         python-protobuf \
         " \
  && deps=$(sed "s/\\\ //g" <<< $deps) \
