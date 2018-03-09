@@ -15,6 +15,10 @@ RUN apt-get update \
         cmake \
         software-properties-common \
         python3-setuptools \
+        python3-nose \
+        python3-nose-cov \
+        python3-pyparsing \
+        python-protobuf \
  && apt-get clean
 
 # Install gazebo dependencies
