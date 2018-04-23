@@ -27,6 +27,7 @@ RUN apt-get update \
  && apt-get clean
 
 RUN pip3 install --upgrade pip \
+ && hash -r pip \
  && pip3 install argcomplete \
  && pip3 install flake8 flake8-blind-except flake8-builtins flake8-class-newline flake8-comprehensions flake8-deprecated flake8-docstrings flake8-import-order flake8-quotes pytest pytest-cov pytest-runner
 
