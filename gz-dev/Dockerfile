@@ -25,6 +25,19 @@ RUN sudo apt-get update \
     sqlite3 \
     libtinyxml-dev \
     ruby-dev \
+    qtbase5-dev \
+    libqwt-qt5-dev \
+    libcurl4-openssl-dev \
+    libjsoncpp-dev \
+    libyaml-dev \
+    libzip-dev \
+    libboost-signals-dev \
+    libboost-filesystem-dev \
+    libboost-program-options-dev \
+    libboost-regex-dev \
+    libboost-iostreams-dev \
+    libtar-dev \
+    libtbb-dev \
  && sudo apt-get clean
 
 # Open port used to talk to gzserver
