@@ -58,6 +58,7 @@ I use a combination of vcstool and colcon to do this.
 
 ## Gazebo binary images
 * gz7
+* gz7-trusty
 * gz8
 * gz9
 
@@ -67,6 +68,10 @@ These images contain gazebo as installed from `packages.osrfoundation.org`.
 * ros2-bionic
 
 Image for building ros2 completely from source.
+
+## ROS 1 binary images
+* ros-melodic-gazebo9
+  * ROS Melodic (desktop full) on Ubuntu Bionic (18.04) with Gazebo 9 from `packages.osrfoundation.org`
 
 ## Other images
 
