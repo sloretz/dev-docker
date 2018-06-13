@@ -2,10 +2,11 @@
 
 if [ $# -eq 0 ]
 then
-    echo "Usage: $0 image-name..."
+    echo "Usage: $0 directory-name"
     exit 1
 fi
 
+# get path to current directory
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [ ! -d $DIR/$1 ]
@@ -18,5 +19,7 @@ user_id=$(id -u)
 image_name=$(basename $1)
 image_plus_tag=$image_name:$(date +%Y_%b_%d_%H%M)
 
-sudo docker build -t $image_plus_tag --no-cache --build-arg user_id=$user_id $DIR/$image_name
-sudo docker tag $image_plus_tag $image_name:latest
+docker build --rm -t $image_plus_tag --build-arg user_id=$user_id $DIR/$image_name
+docker tag $image_plus_tag $image_name:latest
+
+echo "Built $image_plus_tag and tagged as $image_name:latest"

@@ -1,13 +1,14 @@
-FROM devbase-xenial
+FROM devbase-trusty
 
 RUN sudo /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list \
  && wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -'
+
+RUN sudo apt-add-repository ppa:dartsim
 
 RUN sudo apt-get update \
  && sudo apt-get install -y \
         ruby \
         protobuf-compiler \
-        libprotobuf9v5 \
         libqtcore4 \
         libqtgui4 \
         libsdformat4 \
