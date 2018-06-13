@@ -8,4 +8,6 @@ RUN sudo /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-s
     libgazebo7-dev \
  && sudo apt-get clean
 
+RUN /bin/sh -c 'echo ". /usr/share/gazebo/setup.sh" >> ~/.bashrc'
+
 EXPOSE 11345
