@@ -35,7 +35,9 @@ RUN mkdir ~/workspaces ~/other
 
 # Install colcon
 RUN pip3 install -U --user setuptools \
- && pip3 install --user colcon-common-extensions colcon-spawn-shell
+ && pip3 install --user colcon-common-extensions colcon-spawn-shell \
+ && /bin/sh -c 'echo "export PATH=\$PATH:/home/developer/.local/bin" >> ~/.bashrc' \
+ && /bin/sh -c 'echo "export LD_LIBRARYPATH=\$LD_LIBRARY_PATH:/home/developer/.local/lib" >> ~/.bashrc'
 
 # When running a container start in the developer's home folder
 WORKDIR /home/$USERNAME
