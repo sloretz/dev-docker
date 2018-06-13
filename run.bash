@@ -50,21 +50,22 @@ do
   if [ ! -d $WS_DIR/src ]
   then
     echo "Other! $WS_DIR"
-    DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/other/$WS_DIRNAME"
+    DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/home/developer/other/$WS_DIRNAME"
   else
     echo "Workspace! $WS_DIR"
-    DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/workspace/$WS_DIRNAME"
+    DOCKER_OPTS="$DOCKER_OPTS -v $WS_DIR:/home/developer/workspaces/$WS_DIRNAME"
   fi
 done
 
-sudo nvidia-docker run -it \
+sudo docker run -it \
   -e DISPLAY \
   -e QT_X11_NO_MITSHM=1 \
   -e XAUTHORITY=$XAUTH \
   -v "$XAUTH:$XAUTH" \
   -v "/tmp/.X11-unix:/tmp/.X11-unix" \
   -v "/etc/localtime:/etc/localtime:ro" \
-  --rm=true \
+  --rm \
+  --runtime=nvidia \
   --security-opt seccomp=unconfined \
   $DOCKER_OPTS \
   $IMG
