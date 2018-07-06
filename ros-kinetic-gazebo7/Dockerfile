@@ -9,6 +9,8 @@ RUN sudo /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release 
     ros-kinetic-desktop-full \
     gazebo7 \
     libgazebo7-dev \
+    python-catkin-tools \
+    python-rosinstall \
  && sudo rosdep init \
  && sudo apt-get clean
 
