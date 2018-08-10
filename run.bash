@@ -57,6 +57,19 @@ do
   fi
 done
 
+# Determine if image has a folder for ccache use, and if so mount a ramdisk for the cache
+ccache_size=$(docker inspect --format "{{ index .Config.Labels \"sloretz.ccache.size\"}}" $IMG)
+ccache_location=$(docker inspect --format "{{ index .Config.Labels \"sloretz.ccache.location\"}}" $IMG)
+
+if [[ ! -z $ccache_size ]]
+then
+  echo "Ccache ${ccache_location} size ${ccache_size}"
+  DOCKER_OPTS="$DOCKER_OPTS --tmpfs ${ccache_location}:rw,noexec,nosuid,size=${ccache_size},mode=777"
+fi
+
+
+# --device=/dev/input/js0 \
+# --tmpfs /ccache:rw,noexec,nosuid,size=2000000k \
 sudo docker run -it \
   -e DISPLAY \
   -e QT_X11_NO_MITSHM=1 \

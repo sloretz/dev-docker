@@ -17,7 +17,17 @@ RUN apt-get update \
         python3-pip \
         python3-venv \
         build-essential \
+        ccache \
  && apt-get clean
+
+# Setup ccache
+ARG ccache_size=2000000k
+RUN /usr/sbin/update-ccache-symlinks \
+ && touch /etc/ccache.conf \
+ && /bin/sh -c 'echo "cache_dir = /ccache\n" >> /etc/ccache.conf' \
+ && /bin/sh -c 'echo "max_size = ${ccache_size}" >> /etc/ccache.conf'
+
+LABEL "sloretz.ccache.size"="${ccache_size}" "sloretz.ccache.location"="/ccache"
 
 # Add a user with the same user_id as the user outside the container
 # Requires a docker build argument `user_id`
@@ -30,6 +40,9 @@ RUN useradd -U --uid ${user_id} -ms /bin/bash $USERNAME \
 
 # Commands below run as the developer user
 USER $USERNAME
+
+# Add paths for ccache
+RUN /bin/sh -c 'echo "export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc' \
 
 # Make a couple folders for organizing docker volumes
 RUN mkdir ~/workspaces ~/other
