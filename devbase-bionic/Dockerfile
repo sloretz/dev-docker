@@ -42,7 +42,7 @@ RUN useradd -U --uid ${user_id} -ms /bin/bash $USERNAME \
 USER $USERNAME
 
 # Add paths for ccache
-RUN /bin/sh -c 'echo "export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc' \
+RUN /bin/sh -c 'echo "export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc'
 
 # Make a couple folders for organizing docker volumes
 RUN mkdir ~/workspaces ~/other
