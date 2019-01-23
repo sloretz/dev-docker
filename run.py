@@ -36,7 +36,7 @@ if __name__ == '__main__':
         image_name = args.image
 
     # build command for rocker 
-    rocker_cmd = ['rocker', '--execute', '--nvidia', '--user']
+    rocker_cmd = ['rocker', '--nvidia', '--user']
     rocker_cmd += ['--oyr-colcon', '--oyr-spacenav']
     if args.mounts:
         rocker_cmd.append('--oyr-mount')
