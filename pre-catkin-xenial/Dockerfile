@@ -6,6 +6,7 @@ RUN apt-get update \
     build-essential \
     vim \
     python-pip \
+    cmake \
  && apt-get clean
  
 RUN pip install --upgrade --system setuptools argparse catkin-pkg empy mock nose
