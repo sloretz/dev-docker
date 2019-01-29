@@ -3,6 +3,7 @@
 import argparse
 import os
 import sys
+import yaml
 
 
 if __name__ == '__main__':
@@ -15,7 +16,7 @@ if __name__ == '__main__':
                         help='Ignore cache when building Docker images')
     args = parser.parse_args()
 
-    if os.path.isdir(args.image):
+    if os.path.isfile(os.path.join(args.image, "Dockerfile")):
         # If the image is a path, then try building a docker image there
 
         image_name = os.path.basename(args.image)
@@ -35,9 +36,21 @@ if __name__ == '__main__':
         # Not a path? Must be an image from docker hub
         image_name = args.image
 
+    # Try reading run.yaml arguments
+    rocker_args = []
+    run_config_path = os.path.join(args.image, "run.yaml")
+    if os.path.isfile(run_config_path):
+        run_args = yaml.safe_load(open(run_config_path, 'r'))
+        if 'rocker-options' in run_args:
+            for option, value in run_args['rocker-options'].items():
+                rocker_args.append("--" + option)
+                # TODO(sloretz) list support
+                rocker_args.append(value)
+
     # build command for rocker 
     rocker_cmd = ['rocker', '--nvidia', '--user']
     rocker_cmd += ['--oyr-colcon', '--oyr-spacenav']
+    rocker_cmd += rocker_args
     if args.mounts:
         rocker_cmd.append('--oyr-mount')
         rocker_cmd += args.mounts
