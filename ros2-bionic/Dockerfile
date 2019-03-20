@@ -27,6 +27,10 @@ RUN apt-get update \
     libfreetype6-dev libxrandr-dev \
     python-qt-binding python3-pyqt5 python3-sip-dev \
     libxcb-shm0-dev \
+    libbullet-dev libsdl2-dev libsdl-image1.2-dev \
+    python3-lxml \
+    python3-lark-parser \
+    liblog4cxx-dev \
  && apt-get clean
 
 RUN pip3 install --system argcomplete \
