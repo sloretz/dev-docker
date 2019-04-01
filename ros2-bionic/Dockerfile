@@ -31,6 +31,7 @@ RUN apt-get update \
     python3-lxml \
     python3-lark-parser \
     liblog4cxx-dev \
+    python3-numpy \
  && apt-get clean
 
 RUN pip3 install --system argcomplete \
