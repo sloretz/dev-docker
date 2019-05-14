@@ -48,8 +48,10 @@ if __name__ == '__main__':
                 rocker_args.append(value)
 
     # build command for rocker 
-    rocker_cmd = ['rocker', '--nvidia', '--user']
+    rocker_cmd = ['rocker', '--nvidia', '--user', '--x11']
+    rocker_cmd += ['--oyr-run-arg="--ipc=\"host\""']
     rocker_cmd += ['--oyr-colcon', '--oyr-spacenav']
+    rocker_cmd += ['--oyr-cap-add', 'SYS_PTRACE']
     rocker_cmd += rocker_args
     if args.mounts:
         rocker_cmd.append('--oyr-mount')
