@@ -41,17 +41,12 @@ if __name__ == '__main__':
     run_config_path = os.path.join(args.image, "run.yaml")
     if os.path.isfile(run_config_path):
         run_args = yaml.safe_load(open(run_config_path, 'r'))
-        if 'rocker-options' in run_args:
-            for option, value in run_args['rocker-options'].items():
-                rocker_args.append("--" + option)
-                # TODO(sloretz) list support
-                rocker_args.append(value)
+        if 'rocker-args' in run_args:
+            for arg in run_args['rocker-args']:
+                rocker_args.append(arg)
 
     # build command for rocker 
-    rocker_cmd = ['rocker', '--nvidia', '--user', '--x11']
-    rocker_cmd += ['--oyr-run-arg="--ipc=\"host\""']
-    rocker_cmd += ['--oyr-colcon', '--oyr-spacenav']
-    rocker_cmd += ['--oyr-cap-add', 'SYS_PTRACE']
+    rocker_cmd = ['rocker']
     rocker_cmd += rocker_args
     if args.mounts:
         rocker_cmd.append('--oyr-mount')
