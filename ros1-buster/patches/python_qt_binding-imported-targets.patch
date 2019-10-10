@@ -1,0 +1,13 @@
+diff --git cmake/sip_helper.cmake cmake/sip_helper.cmake
+index 420d309..5656f70 100644
+--- cmake/sip_helper.cmake
++++ cmake/sip_helper.cmake
+@@ -205,6 +205,8 @@ function(build_sip_binding PROJECT_NAME SIP_FILE)
+ 
+     # SIP configure doesn't handle build configuration keywords
+     catkin_filter_libraries_for_build_configuration(LIBRARIES ${${PROJECT_NAME}_LIBRARIES})
++    # SIP configure doesn't handle CMake targets
++    catkin_replace_imported_library_targets(LIBRARIES ${LIBRARIES})
+ 
+     add_custom_command(
+         OUTPUT ${SIP_BUILD_DIR}/Makefile

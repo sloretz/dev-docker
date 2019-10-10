@@ -1,0 +1,6 @@
+rocker-args:
+#  - --nvidia
+  - --user
+  - --x11
+  - --oyr-run-arg="--ipc=host"
+  - --oyr-cap-add=SYS_PTRACE
