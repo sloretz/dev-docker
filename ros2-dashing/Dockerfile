@@ -22,13 +22,16 @@ RUN apt update \
 # Install ros 2 packags
 ENV ROS_DISTRO=dashing
 RUN apt-get update \
- && apt install -y ros-$ROS_DISTRO-desktop \
- && apt-get clean
+ && apt install -y \
+    python3-rosdep \
+    ros-$ROS_DISTRO-desktop \
+ && apt-get clean \
+ && rosdep init
 
 # Environment Setup
 RUN apt-get update \
  && apt install -y python3-argcomplete \
- && /bin/sh -c 'echo ". /opt/ros/dashing/setup.bash" >> ~/.bashrc' \
+ && /bin/sh -c 'echo ". /opt/ros/dashing/setup.bash" >> /etc/bash.bashrc' \
  && apt-get clean
 
 # Installing additional RMW implementations
@@ -38,3 +41,6 @@ RUN apt-get update \
 #  && RTI_NC_LICENSE_ACCEPTED=yes sudo apt-get install -y rti-connext-dds-5.3.1 \
 #  && sudo apt-get install -y ros-$ROS_DISTRO-rmw-connext-cpp \
  && apt-get clean
+
+COPY settings.bash /opt/sloretz_settings.bash
+RUN echo "source /opt/sloretz_settings.bash" >> /etc/bash.bashrc
