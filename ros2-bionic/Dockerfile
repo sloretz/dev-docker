@@ -38,7 +38,6 @@ RUN apt-get update \
     python3-numpy \
     python3-pytest \
     libpoco-dev \
-    rti-connext-dds-5.3.1 \
     libopensplice69 \
     libyaml-dev \
     libsqlite3-dev \
