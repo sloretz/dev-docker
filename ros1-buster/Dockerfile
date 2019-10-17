@@ -39,5 +39,54 @@ RUN apt-get update \
     git \
     vim \
     cmake \
+    python3-paramiko \
+    liburdfdom-dev \
+    liburdfdom-headers-dev \
+    libtinyxml-dev \
+    libtinyxml2-dev \
+    python3-empy \
+    libboost-all-dev \
+    python3-nose \
+    libgtest-dev \
+    python3-mock \
+    pkg-config \
+    sbcl \
+    libconsole-bridge-dev \
+    google-mock \
+    python3-coverage \
+    libpython2.7-stdlib \
+    graphviz \
+    libeigen3-dev \
+    qt5-qmake \
+    pyqt5-dev \
+    python3-pyqt5 \
+    python3-pyqt5.qtsvg \
+    python3-sip-dev \
+    qtbase5-dev \
+    tango-icon-theme \
+    liblz4-dev \
+    libbz2-dev \
+    python3-pil \
+    libbullet-dev \
+    libcppunit-dev \
+    python3-netifaces \
+    qtbase5-dev \
+    libpoco-dev \
+    python3-pydot \
+    python3-pygraphviz \
+    uuid-dev \
+    libcurl4-openssl-dev \
+    curl \
+    libgpgme-dev \
+    libssl-dev \
+    python3-numpy \
+    python3-psutil \
+    python3-lxml \
+    libapr1-dev \
+    libaprutil1-dev \
+    liblog4cxx-dev \
+    python3-pycryptodome \
+    python3-gnupg \
+    python3-defusedxml \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
