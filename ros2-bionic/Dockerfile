@@ -36,6 +36,29 @@ RUN apt-get update \
     python3-lark-parser \
     liblog4cxx-dev \
     python3-numpy \
+    python3-pytest \
+    libpoco-dev \
+    rti-connext-dds-5.3.1 \
+    libopensplice69 \
+    libyaml-dev \
+    libsqlite3-dev \
+    libconsole-bridge-dev \
+    libassimp-dev \
+    python3-pyqt5.qtsvg \
+    tango-icon-theme \
+    python3-flake8 \
+    libspdlog-dev \
+    python3-psutil \
+    libxml2-utils \
+    libpcl-dev \
+    libboost-all-dev \
+    python3-pydot \
+    python3-pygraphviz \
+    libcppunit-dev \
+    python3-matplotlib \
+    clang-tidy \
+    python3-mypy \
+    python3-pytest-mock \
  && apt-get clean
 
 RUN rosdep init
