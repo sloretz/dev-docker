@@ -39,35 +39,24 @@ RUN apt-get update \
     git \
     vim \
     cmake \
-    pkg-config \
-    libboost-all-dev \
-    uuid-dev \
-    python3-numpy \
-    python3-psutil \
-    python3-defusedxml \
-    python3-empy \
-    google-mock \
-    libgtest-dev \
-    python3-nose \
-    python3-mock \
-    python-wxtools \
-    libeigen3-dev \
-    libconsole-bridge-dev \
-    libpoco-dev \
-    libbz2-dev \
-    python3-pil \
-    liburdfdom-headers-dev \
-    libtinyxml-dev \
-    libtinyxml2-dev \
-    libbullet-dev \
-    python-pyqt5.qtopengl \
-    liblz4-dev \
-    libcppunit-dev \
-    liburdfdom-dev \
-    python-sip-dev \
     python3-paramiko \
-    qtbase5-dev \
-    python-catkin-pkg \
+    liburdfdom-dev \
+    liburdfdom-headers-dev \
+    libtinyxml-dev
+    libtinyxml2-dev \
+    python3-empy \
+    libboost-all-dev \
+    python3-nose \
+    libgtest-dev \
+    python3-mock \
+    pkg-config \
+    sbcl \
+    libconsole-bridge-dev \
+    google-mock \
+    python3-coverage \
+    libpython2.7-stdlib \
+    graphviz \
+    libeigen3-dev \
     qt5-qmake \
     pyqt5-dev \
     python3-pyqt5 \
@@ -75,31 +64,29 @@ RUN apt-get update \
     python3-sip-dev \
     qtbase5-dev \
     tango-icon-theme \
+    liblz4-dev \
+    libbz2-dev \
+    python3-pil \
+    libbullet-dev \
+    libcppunit-dev \
+    python3-netifaces \
+    qtbase5-dev \
+    libpoco-dev \
+    python3-pydot \
+    python3-pygraphviz \
+    uuid-dev \
+    libcurl4-openssl-dev \
+    curl \
+    libgpgme-dev \
+    libssl-dev \
+    python3-numpy \
+    python3-psutil \
+    python3-lxml \
     libapr1-dev \
     libaprutil1-dev \
     liblog4cxx-dev \
-    sbcl \
-    python-yaml \
-    python-mock \
-    python-dev \
-    libpython2.7-stdlib \
-    python-empy \
-    python3-coverage \
-    python-rosdep \
-    python-nose \
-    python-coverage \
-    libgpgme-dev \
-    libssl-dev \
-    python3-lxml \
     python3-pycryptodome \
     python3-gnupg \
-    graphviz \
-    python-pyqt5.qtwebkit \
-    python-numpy \
-    python3-pydot \
-    python3-pygraphviz \
-    python3-netifaces \
-    libcurl4-openssl-dev \
-    curl \
+    python3-defusedxml \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
