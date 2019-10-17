@@ -1,3 +1,5 @@
-rocker-options:
-  distro-id: ubuntu
-  distro-version: "16.04"
+rocker-args:
+  - --user
+  - --x11
+  - --oyr-run-arg="--ipc=host"
+  - --oyr-cap-add=SYS_PTRACE
