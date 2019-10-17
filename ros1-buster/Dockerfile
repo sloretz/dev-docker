@@ -42,7 +42,7 @@ RUN apt-get update \
     python3-paramiko \
     liburdfdom-dev \
     liburdfdom-headers-dev \
-    libtinyxml-dev
+    libtinyxml-dev \
     libtinyxml2-dev \
     python3-empy \
     libboost-all-dev \
